@@ -24,9 +24,8 @@
         width: 40%;
         height: 700px;
 
-        background-image:
-                linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('http://t1.daumcdn.net/liveboard/newsade/15233a47a729493f95380f2d58fab433.JPG');
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('http://t1.daumcdn.net/liveboard/newsade/15233a47a729493f95380f2d58fab433.JPG');
         background-position: center;
         background-size: cover;
 
@@ -87,9 +86,23 @@
         content: "- ";
     }
 </style>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/weather/seoul",
+                data: {},
+                success: function (response) {
+                    let temp = response['temp'];
+                    $("#temp").text(temp);
+                }
+            })
+    });
+</script>
 <body>
 <div class="my-title">
     <h1>차은우 팬명록</h1>
+    <p>현재기온 : <span id="temp"></span>도</p>
 </div>
 <div class="writing">
     <div class="form-floating mb-3">
